@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #080414;
+    --accent-glow: rgba(168, 85, 247, 0.35);
+    --can-theme-glow: #A855F7;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    background-color: #080414;
+    color: #FAF5FF;
+    overflow-x: hidden;
+  }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080414;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2D1B4E;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A855F7;
+  }
+}
+
+/* Film Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(18, 9, 38, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(28, 14, 58, 0.8);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(168, 85, 247, 0.2);
+  transform: translateY(-4px);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 50px -10px rgba(168, 85, 247, 0.4);
+}
+
+.glow-lime {
+  box-shadow: 0 0 50px -10px rgba(204, 255, 0, 0.4);
+}
+
+.glow-pink {
+  box-shadow: 0 0 50px -10px rgba(255, 51, 102, 0.4);
+}
+
+.text-stroke-title {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}
+
+.text-stroke-glow {
+  -webkit-text-stroke: 1.5px #A855F7;
+  color: transparent;
+}
+
+/* Architectural vertical beams */
+.architectural-beam {
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.12) 0%, rgba(138, 43, 226, 0.03) 50%, transparent 100%);
+  border-left: 1px solid rgba(168, 85, 247, 0.08);
+  border-right: 1px solid rgba(168, 85, 247, 0.08);
+}
+
+/* Text Gradients */
+.gradient-text-purple {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E9D5FF 40%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-pink {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FECDD3 40%, #FF3366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-lime {
+  background: linear-gradient(135deg, #FFFFFF 0%, #ECFCCB 40%, #CCFF00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-rainbow {
+  background: linear-gradient(90deg, #FAF5FF, #A855F7, #FF3366, #CCFF00, #FAF5FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(-14px) rotate(-1deg); }
+  50% { transform: translateY(14px) rotate(1.5deg); }
+}
+
+@keyframes floatRev {
+  0%, 100% { transform: translateY(12px) rotate(1deg); }
+  50% { transform: translateY(-12px) rotate(-1.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatRev 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 25s linear infinite;
+}
+
+/* Zero Gravity Floating Keyframes */
+@keyframes zeroGFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-16px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+  75% {
+    transform: translateY(14px) rotate(-0.8deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-zero-g {
+  animation: zeroGFloat 8s ease-in-out infinite;
+}
+
+.animate-zero-g-delayed {
+  animation: zeroGFloat 9s ease-in-out infinite;
+  animation-delay: -3.5s;
+}
+
+.animate-zero-g-fast {
+  animation: zeroGFloat 5s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+/* Orbital spinning particle ring */
+@keyframes orbitRing {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-orbit {
+  animation: orbitRing 22s linear infinite;
+}
+
+/* Slide in animations for cart & modal */
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideLeft {
+  animation: slideLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Font helpers */
+.font-display {
+  font-family: 'Syne', 'Outfit', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
